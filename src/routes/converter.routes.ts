@@ -1,25 +1,27 @@
 import { Router, request, response } from 'express'
 import { uuid } from 'uuidv4'
+import CreateConverterService from '../services/CreateConverters'
 
 const converterRoutes = Router()
 
 
 const converterAll = [{}]
 
-converterRoutes.post('/', (request, response) => {
-    const { typeConvert, typeConverted, valueInside, valueOutside } = request.body
+converterRoutes.post('/', async (request, response) => {
+    const { typeConvert, typeConverted, valueInside, valueOutside, date } = request.body
 
-    const Convert = {
-        id: uuid(),
+    const createConverter = new CreateConverterService
+
+    const converter = await createConverter.execute({
         typeConvert,
         typeConverted,
         valueInside,
-        valueOutside
-    }
+        valueOutside,
+        date
+    }) 
+    //converterAll.push(Convert)
 
-    converterAll.push(Convert)
-
-    return response.json(Convert)
+    return response.json(converter)
 })
 
 converterRoutes.get('/', (request, response) => {
