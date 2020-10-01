@@ -1,7 +1,6 @@
 import Converter from '../models/Converters'
 import { getRepository } from 'typeorm'
 
-console.log("ok")
 
 interface RequestDTO {
     typeConvert: string
@@ -11,12 +10,10 @@ interface RequestDTO {
     date: Date
 }
 
-console.log("ok2")
-
 class CreateConverterService {
     public async execute({ typeConvert, typeConverted, valueInside, valueOutside, date }:RequestDTO): Promise<Converter> {
 
-        const convertersRepository = getRepository(Converter) //obter funções do repository, delete, insert..
+        const convertersRepository = getRepository(Converter)
         
 
         const convert = convertersRepository.create({
