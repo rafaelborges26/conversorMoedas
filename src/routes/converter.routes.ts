@@ -6,7 +6,7 @@ import ensureAuthenticated from '../middlewares/ensureAuthenticated'
 
 const converterRoutes = Router()
 
-converterRoutes.use(ensureAuthenticated)
+//converterRoutes.use(ensureAuthenticated)
 
 converterRoutes.post('/', async (request, response) => {
     const { typeConvert, typeConverted, valueInside, valueOutside, date } = request.body
