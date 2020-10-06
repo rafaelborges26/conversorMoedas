@@ -1,12 +1,12 @@
 import { Router, request, response } from 'express'
-import { uuid } from 'uuidv4'
 import CreateConverterService from '../services/CreateConverters'
 import GetConverterService from '../services/GetConverters'
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated'
+
 const converterRoutes = Router()
 
-
-const converterAll = [{}]
+converterRoutes.use(ensureAuthenticated)
 
 converterRoutes.post('/', async (request, response) => {
     const { typeConvert, typeConverted, valueInside, valueOutside, date } = request.body
@@ -20,18 +20,19 @@ converterRoutes.post('/', async (request, response) => {
         valueOutside,
         date
     }) 
-    //converterAll.push(Convert)
 
     return response.json(converter)
 })
 
 converterRoutes.get('/', async (request, response) => {
+
+
     const GetConverter = new GetConverterService
 
     const converter = await GetConverter.execute()
 
 
-    return response.json(converter)
+    return response.json({converter})
 
 })
 
