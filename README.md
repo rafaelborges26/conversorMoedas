@@ -3,7 +3,7 @@
 Backend do desenvolvimento de uma aplicação que converte valores de câmbios (CAD, US, R$)
 Faz uso do banco de dados Mysql está desenvolvida na linguagem TypeScript.
 
--Em cada conversão de valor no frontend, ele salva o registro no banco.
+-Em cada conversão de valor no frontend, ele salva o registro no banco.<br>
 -Após clicar em Fazer login no frontend, faz autenticação e cria sessão automáticamente.  
 
 ### `Para startar o projeto`
